@@ -102,9 +102,9 @@ The Document API uses a similar configuration, but will need to point to the ref
 
 Setting up the connection types for on-premises DSE follows a very similar structure with the main difference being that you need to specify the Cluster URL in the `Address` field. 
 
-#### Configure the sentiment analysis 
+#### Configure the sentiment analytics
 
-Create a free account at Kenzy AI here: https://kenzyai.com/. Once logged, create an API Key. Update the appsettings.json file entry with the API Key --> "Astra"."KenzyAiKey".
+Create a free account at Kenzy AI here: https://kenzyai.com/. Once logged in, create an API Key. Update the appsettings.json file entry with the API Key --> "Astra"."KenzyAiKey".
 
 ![Add Kenzy AI Key](/img/configure-kenzy-ai-key.jpg)
 
