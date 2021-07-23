@@ -73,7 +73,8 @@ With that setup out of the way, it's time to pull this repository.
 And now we need to setup the tool with the definitions of our database (respositories) to make sure that it can connect properly. We hope we've made this pretty easy for you. :)
 
 #### Add Astra security bundle to the solution
-Download the security bundle from your Astra account and include the file in the rool level of project solution
+Download the security bundle from your Astra account and include the file in the rool level of project solution.
+![Add Security Bundle](/img/add-security-bundle-to-solution.jpg)
 
 #### Configure Repository Definitions
 
