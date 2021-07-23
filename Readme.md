@@ -126,7 +126,10 @@ The setup is complete and you're ready to get rolling now!
 Finally, Build and Run the application.
 
 ![App demo gif](/img/hackathon-functional-demo1.gif)
+*Gif demonstrating changing repository types and editing the price of a product*
 
 ![Sentiment demo gif](/img/sentiment-analysis-demo.gif)
+*Gif demonstrating changing repository types and editing the description of a product to improve sentiment analysis from negative to positive*
+
 
 
