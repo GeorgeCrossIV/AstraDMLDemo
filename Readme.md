@@ -110,7 +110,7 @@ The setup is complete and you're ready to get rolling now!
 
 Finally, Build and Run the application.
 
-![App demo gif](/img/"Hackathon Functional Demo1.gif")
+![App demo gif](/img/hackathon-functional-demo1.gif)
 
 
 
