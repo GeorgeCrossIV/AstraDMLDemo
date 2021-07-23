@@ -6,7 +6,7 @@ Data can be hard to access, and it's rarely presented in a developer friendly wa
 
 ## Overview
 
-This tool has been designed by Data Architects at DataStax to showcase the power of *[Astra](https://astra.datastax.com)*, a DBaaS built on Cassandra and *[Stargate](https://stargate.io)*, an API gateway that provides secure access to. This gateway supports connections via REST, GRAPHQL, and schemaless Document APIs. The C# driver is also imlpemented to showcase connecting to your data via CQL queries. This demo shows the ease with which you can access your data the way you want any way you want it. 
+This tool has been designed by Data Architects at DataStax to showcase the power of *[Astra](https://astra.datastax.com)*, a DBaaS built on Cassandra and *[Stargate](https://stargate.io)*, an API gateway that provides secure access to. This gateway supports connections via REST, GRAPHQL, and schemaless Document APIs. The C# driver is also implemented to showcase connecting to your data via CQL queries. This demo shows the ease with which you can access your data the way you want any way you want it. 
 
 ### Design
 
@@ -21,7 +21,7 @@ The web application communicates with the repositories, which expose the data ob
 ![Physical Architecture](img/physical-architecture.jpg)
 
 This is a Cloud native application which demonstrates the ability to use DBaaS and IaaS in concert to rapidly implement the solutions. In the steps below, we outline how to leverage Astra for FREE and in minutes as the data store for this demo. 
-*(Optional)* Lifecycle Manager is used to install and configure a three-node DSE cluster, with Stargate on a seperate VM.
+*(Optional)* Lifecycle Manager is used to install and configure a three-node DSE cluster, with Stargate on a separate VM.
 
 ## Getting Started
 
@@ -73,15 +73,15 @@ Save this zip file as we will use it later.
 
 *Note: This step is just for Astra setup, we have code in our solution to handle the `GetToken` operations for on-premises DSE with Stargate.* 
 
-Now that we have our table, we need to grab an auth token from the Astra UI. Go to *Organization Settings > Token Managemnt > Select Role > Administrator Service Account > Generate Token* to create your API auth token. 
+Now that we have our table, we need to grab an auth token from the Astra UI. Go to *Organization Settings > Token Management > Select Role > Administrator Service Account > Generate Token* to create your API auth token. 
 
 ![Generate Token](/img/get_token.jpg)
 
-The token information is now displayed in the UI and select *Download the CSV* to save the sensitive information. We will use this to configure our tool for APi authentication in the later steps. 
+The token information is now displayed in the UI and select *Download the CSV* to save the sensitive information. We will use this to configure our tool for API authentication in the later steps. 
 
 ### 2. Pull this repository and Configure 
 
-With that setup out of the way, it's time to pull this repository. Next, we need to setup the tool with the definitions of our database (respositories) to make sure that it can connect properly. We hope we've made this pretty easy for you. :)
+With that setup out of the way, it's time to pull this repository. Next, we need to setup the tool with the definitions of our database (repositories) to make sure that it can connect properly. We hope we've made this pretty easy for you. :)
 
 #### Add Astra security bundle to the solution
 Download the security bundle from your Astra account and include the file in the root level of the c# project.
