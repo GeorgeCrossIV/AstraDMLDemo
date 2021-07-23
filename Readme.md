@@ -2,6 +2,7 @@
 
 Data can be hard to access, and it's rarely presented in a developer friendly way. The goal of this tool is to provide implemented examples of accessing the same central data layer via a service layer that allows you to interact with your data via the connection type that is most intuitive to you. We've fully implemented CRUD operations for each of the connection types, so you can focus on developing the next feature for your business or project and leave the data layer to DataStax, the easiest, most robust, and fastest data lane on the planet. 
 
+![Overview](/img/overview-demo.gif)
 
 ## Overview
 
