@@ -7,6 +7,16 @@ Data can be hard to access, and it's rarely presented in a developer friendly wa
 
 This tool has been designed by Data Architects at DataStax to showcase the power of *[Stargate](https://stargate.io)*, an API gateway that provides secure access to your Cassandra database. This gateway supports connections via REST, GRAPHQL, and schemaless Document APIs. The C# driver is also imlpemented to showcase connecting to your data via CQL queries. 
 
+### Architectures
+
+![Conceptual Architecture](img/conceptual-architecture.jpg)
+
+
+![Logical Architecture](img/logical-architecture.jpg)
+
+
+![Physical Architecture](img/physical-architecture.jpg)
+
 
 ## Getting Started
 
@@ -112,6 +122,6 @@ Finally, Build and Run the application.
 
 ![App demo gif](/img/hackathon-functional-demo1.gif)
 
-
+![Sentiment demo gif](/img/sentiment-analysis-demo.gif)
 
 
