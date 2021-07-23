@@ -73,7 +73,7 @@ With that setup out of the way, it's time to pull this repository.
 And now we need to setup the tool with the definitions of our database (respositories) to make sure that it can connect properly. We hope we've made this pretty easy for you. :)
 
 #### Add Astra security bundle to the solution
-Download the security bundle from your Astra account and include the file in the rool level of project solution.
+Download the security bundle from your Astra account and include the file in the root level of the c# project.
 ![Add Security Bundle](/img/add-security-bundle-to-solution.jpg)
 
 #### Configure Repository Definitions
@@ -105,6 +105,8 @@ Setting up the connection types for on-premises DSE follows a very similar struc
 #### Configure the sentiment analysis 
 
 Create a free account at Kenzy AI here: https://kenzyai.com/. Once logged, create an API Key. Update the appsettings.json file entry with the API Key --> "Astra"."KenzyAiKey".
+
+![Add Kenzy AI Key](/img/configure-kenzy-ai-key.jpg)
 
 The setup is complete and you're ready to get rolling now!
 
