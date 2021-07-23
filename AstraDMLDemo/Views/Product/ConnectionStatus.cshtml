@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AstraDMLDemo.Models.ConnectionStatusItem>
+
+@{
+    ViewData["Title"] = "ConnectionStatus";
+    string color="bg-success";
+    string borderColor = "border-success";
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        @if (item.Available)
+        {
+            color = "bg-success";
+            borderColor = "border-success";
+        }
+        else
+        {
+            color = "bg-danger";
+            borderColor = "border-danger";
+        }
+
+        <div class="col-3">
+            <div class="card bg-dark @borderColor m-1">
+                <div class="card-header @color"></div>
+                <div class="card-body">
+                    <h2><b>Name: </b>@item.Name</h2>
+                    <h3><b>Server Type: </b>@item.ServerType</h3>
+                </div>
+            </div>
+        </div>
+    }
+</div>

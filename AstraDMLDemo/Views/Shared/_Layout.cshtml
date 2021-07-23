@@ -1,0 +1,77 @@
+﻿@*@using Microsoft.Extensions.Configuration 
+@inject IConfiguration Configuration
+
+@{ 
+    string connectionType = ViewBag.ConnectionType;
+}*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AstraDMLDemo</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" />
+    <link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
+    <link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+</head>
+<body class="bg-dark text-white">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-dark text-white-50 border-bottom box-shadow mb-3">
+            <div class="container-fluid ">
+                <a class="navbar-brand text-white-50" asp-area="" asp-controller="Product" asp-action="Index">AstraDMLDemo</a>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <!-- Select Connection Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white-50" href="#" id="navbardrop" data-toggle="dropdown">
+                                Select Connection
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="Memory">Memory</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="AstraCql">Astra CQL</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="Rest">Astra Rest API</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="GraphQl">Astra GraphQL API</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="Document">Astra Document API</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="DseCql">DSE CQL</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="DseRest">DSE Rest API</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="DseGraphQl">DSE GraphQL API</a>
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="SetRepository" asp-route-repository="DseDocument">DSE Document API</a>
+                            </div>
+                        </li>
+                        <!--Admin Dropdown-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle  text-white-50" href="#" id="navbardrop" data-toggle="dropdown">
+                                Administration
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-area="" asp-controller="Product" asp-action="ConnectionStatus">Connection Statuses</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid bg-dark text-white">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - AstraDMLDemo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

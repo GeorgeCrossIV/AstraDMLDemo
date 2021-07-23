@@ -1,0 +1,129 @@
+[
+  {
+    "Name": "Memory",
+    "ConnectionType": 1,
+    "InterfaceType": 4,
+    "DatabaseName": null,
+    "Keyspace": null,
+    "Address": null,
+    "UserClientId": null,
+    "PasswordSecret": null,
+    "Token": null,
+    "Region": null,
+    "TableName": null,
+    "Server": "Memory"
+  },
+  {
+    "Name": "AstraCql",
+    "ConnectionType": 2,
+    "InterfaceType": 0,
+    "DatabaseName": null,
+    "Keyspace": "dml_demo",
+    "Address": "secure-connect-gmc-test.zip",            //this is the secure connect bundle path
+    "UserClientId": "{YOUR CLIENT ID}",
+    "PasswordSecret": "{YOUR SECRET OR PASSWORD}",
+    "Token": null,
+    "Region": "us-east1",
+    "TableName": "products",
+    "Server": "Astra DB"
+  },
+  {
+    "Name": "DseCql",
+    "ConnectionType": 2,
+    "InterfaceType": 0,
+    "DatabaseName": null,
+    "Keyspace": "dml_demo",
+    "Address": "{CONTACT POINT IP ADDRESS}", //this is the contact point address
+    "UserClientId": "{USERNAME}",
+    "PasswordSecret": "{PASSWORD}",
+    "Token": null,
+    "Region": null,
+    "TableName": "products",
+    "Server": "DSE Cluster"
+  },
+  {
+    "Name": "Rest",
+    "ConnectionType": 0,
+    "InterfaceType": 3,
+    "DatabaseName": null,
+    "Keyspace": "dml_demo",
+    "Address": "{ASTRA DB ID}",  //this is the Astra DB ID
+    "UserClientId": null,
+    "PasswordSecret": null,
+    "Token": "{ASTRA TOKEN}",
+    "Region": "us-east1",
+    "TableName": "products",
+    "Server": "Astra DB"
+  },
+  {
+    "Name": "GraphQl",
+    "ConnectionType": 0,
+    "InterfaceType": 2,
+    "DatabaseName": null,
+    "Keyspace": "dml_demo",
+    "Address": "{ASTRA DB ID}", //this is the Astra DB ID
+    "UserClientId": null,
+    "PasswordSecret": null,
+    "Token": "{ASTRA TOKEN}",
+    "Region": "us-east1",
+    "TableName": "products",
+    "Server": "Astra DB"
+  },
+  {
+    "Name": "Document",
+    "ConnectionType": 0,
+    "InterfaceType": 1,
+    "DatabaseName": null,
+    "Keyspace": "dml_demo",
+    "Address": "{ASTRA DB ID}", //this is the Astra DB ID
+    "UserClientId": null,
+    "PasswordSecret": null,
+    "Token": "{ASTRA TOKEN}",
+    "Region": "us-east1",
+    "TableName": "products_collection",
+    "Server": "Astra DB"
+  },
+  {
+    "Name": "DseRest",
+    "ConnectionType": 0,
+    "InterfaceType": 3,
+    "DatabaseName": null,
+    "Keyspace": "dml_demo",
+    "Address": "{CONTACT POINT IP ADDRESS}", //this is the contact point address
+    "UserClientId": "{USERNAME}",
+    "PasswordSecret": "{PASSWORD}",
+    "Token": null,
+    "Region": null,
+    "TableName": "products",
+    "Server": "DSE Cluster"
+  },
+  {
+    "Name": "DseGraphQl",
+    "ConnectionType": 0,
+    "InterfaceType": 2,
+    "DatabaseName": null,
+    "Keyspace": "dml_demo",
+    "Address": "{CONTACT POINT IP ADDRESS}", //this is the contact point address
+    "UserClientId": "{USERNAME}",
+    "PasswordSecret": "{PASSWORD}",
+    "Token": null,
+    "Region": null,
+    "TableName": "products",
+    "Server": "DSE Cluster"
+  },
+  {
+    "Name": "DseDocument",
+    "ConnectionType": 0,
+    "InterfaceType": 1,
+    "DatabaseName": null,
+    "Keyspace": "dml_demo",
+    "Address": "{CONTACT POINT IP ADDRESS}", //this is the contact point address
+    "UserClientId": "{USERNAME}",
+    "PasswordSecret": "{PASSWORD}",
+    "Token": null,
+    "Region": null,
+    "TableName": "products_collection",
+    "Server": "DSE Cluster"
+  }
+
+]

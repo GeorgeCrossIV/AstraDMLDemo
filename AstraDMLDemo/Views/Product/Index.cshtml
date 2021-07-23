@@ -1,0 +1,310 @@
+﻿@model IEnumerable<AstraDMLDemo.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    RepositoryDefinition repositoryDefinition = ViewBag.RepositoryDefinition;
+
+    Pager pager = new Pager();
+    int pageNo = 0;
+
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+
+}
+
+<div class="row m-1">
+    <div class="col-3">
+        <div class="row">
+            <div class="card bg-dark border-success">
+                <div class="card-header p-1 bg-success"><b>Query Language</b></div>
+                <div class="card-body p-1 m-0 ">@QueryLanguage(repositoryDefinition)</div>
+            </div>
+            <div class="" style="margin-top: 25px">
+                <span><i class="fas fa-caret-left"></i>--@ConnectionType(repositoryDefinition)--<i class="fas fa-caret-right"></i></span>
+            </div>
+            <div class="card bg-dark border-success ">
+                <div class="card-header p-1 bg-success"><i class="fas fa-database"></i> <b>@repositoryDefinition.Server</b></div>
+                <div class="card-body p-1 m-0 "><i class="fas fa-table"></i> @repositoryDefinition.TableName</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div id="sentimentGraph" style="height: 50px"></div>
+    </div>
+    <div class="col-sm-3">
+        <b>Connection duration: </b> @ViewBag.ConnectionDuration (ms) | <b>Command Duration: </b> @ViewBag.CommandDuration (ms)
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#repositoryDefinition">
+            Repository Definition
+        </button>
+    </div>
+</div>
+
+<!-- Repository Definition Modal -->
+<div class="modal fade" id="repositoryDefinition" tabindex="-1" role="dialog" aria-labelledby="repositoryDefinitionLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <h5 class="modal-title" id="repositoryDefinitionLabel">Repository Definition for: @repositoryDefinition.Name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <partial name="RepositoryDefinitionDetailModal" model="@repositoryDefinition" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Product table -->
+<div class="card bg-dark border-primary">
+    <div class="card-header bg-primary">
+        <div class="row">
+            <div class="col-2">
+                <h4><b># Records: </b>@ViewBag.TotalRecordCount</h4>
+            </div>
+            <div class="col-2">
+                <input type="button" class="btn btn-primary" value="Create New" onclick="location.href='@Url.Action("Create","Product")'" />
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="col-2">
+                @*<partial name="_Pager" model="@pager" />*@
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-striped table-dark">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.productname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.created)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a class="text-white font-weight-bold" href="@Url.Action("Details","Product", new { id = item.id })">@Html.DisplayFor(modelItem => item.id)</a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productname)
+                        </td>
+                        <td>
+                            <i class="fas @SentimentIcon(item.field1)" style="color:@SentimentColor(item.field1)"></i> @Html.DisplayFor(modelItem => item.description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.created)
+                        </td>
+                        <td>
+                            <input type="button" class="btn btn-success" value="Edit" onclick="location.href='@Url.Action("Edit","Product", new { id = item.id })'" />
+                            <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete","Product", new { id = item.id })'" />
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <partial name="_Pager" model="@pager" />
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        var dom = document.getElementById("sentimentGraph");
+        var myChart = echarts.init(dom);
+        var app = {};
+
+        var option;
+
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {            // Use axis to trigger tooltip
+                    type: 'shadow'        // 'shadow' as default; can also be 'line' or 'shadow'
+                }
+            },
+            color: ['green','grey', 'red'],
+            legend: {
+                data: ['Positive', 'Neutral', 'Negative'],
+                textStyle: {
+                    color:"white"
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                top: '20',
+                containLabel: false,
+                show: false
+            },
+            xAxis: {
+                type: 'value',
+                splitLine: {
+                    show: false
+                },
+                showGrid: false
+            },
+            yAxis: {
+                show: false,
+                type: 'category',
+                data: ['Products']
+            },
+            series: [
+                {
+                    name: 'Positive',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [@ViewBag.PositiveCount]
+                },
+                {
+                    name: 'Neutral',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [@ViewBag.NeutralCount]
+                },
+                {
+                    name: 'Negative',
+                    type: 'bar',
+                    stack: 'total',
+                    label: {
+                        show: true
+                    },
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [@ViewBag.NegativeCount]
+                }
+            ]
+        };
+
+        if (option && typeof option === 'object') {
+            myChart.setOption(option);
+        }
+    </script>
+}
+
+@functions {
+    public string QueryLanguage(RepositoryDefinition rd)
+    {
+        switch (rd.InterfaceType)
+        {
+            case AstraDMLDemo.Enums.InterfaceType.Memory:
+                return "LINQ";
+
+            case AstraDMLDemo.Enums.InterfaceType.CassandraCSharpDriver:
+                return "CQL";
+
+            case AstraDMLDemo.Enums.InterfaceType.RestApi:
+                return "REST API";
+
+            case AstraDMLDemo.Enums.InterfaceType.GraphQlApi:
+                return "GraphQL API";
+
+            case AstraDMLDemo.Enums.InterfaceType.DocumentApi:
+                return "Document API";
+
+            default:
+                return "";
+
+        }
+    }
+
+    public string ConnectionType(RepositoryDefinition rd)
+    {
+        switch (rd.ConnectionType)
+        {
+            case AstraDMLDemo.Enums.ConnectionType.Memory:
+                return "NA";
+
+            case AstraDMLDemo.Enums.ConnectionType.API:
+                return "HTTP/HTTPS";
+
+            case AstraDMLDemo.Enums.ConnectionType.Driver:
+                return "CassandraCSharpDriver";
+
+            default:
+                return "";
+
+        }
+    }
+
+    public string SentimentIcon(string sentiment)
+    {
+        switch (sentiment)
+        {
+            case "positive":
+                return "fa-smile";
+
+            case "nuetral":
+                return "fa-meh";
+
+            case "negative":
+                return "fa-frown";
+
+            default:
+                return "fa-meh";
+
+        }
+    }
+    public string SentimentColor(string sentiment)
+    {
+        switch (sentiment)
+        {
+            case "positive":
+                return "green";
+
+            case "nuetral":
+                return "grey";
+
+            case "negative":
+                return "red";
+
+            default:
+                return "grey";
+
+        }
+    }
+
+
+}
