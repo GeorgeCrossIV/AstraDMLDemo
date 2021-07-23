@@ -8,7 +8,7 @@ Data can be hard to access, and it's rarely presented in a developer friendly wa
 
 This tool has been designed by Data Architects at DataStax to showcase the power of *[Astra](https://astra.datastax.com)*, a DBaaS built on Cassandra and *[Stargate](https://stargate.io)*, an API gateway that provides secure access to. This gateway supports connections via REST, GRAPHQL, and schemaless Document APIs. The C# driver is also imlpemented to showcase connecting to your data via CQL queries. This demo shows the ease with which you can access your data the way you want any way you want it. 
 
-### Architectures
+### Design
 
 ![Conceptual Architecture](img/conceptual-architecture.jpg)
 
