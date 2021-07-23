@@ -5,18 +5,22 @@ Data can be hard to access, and it's rarely presented in a developer friendly wa
 
 ## Overview
 
-This tool has been designed by Data Architects at DataStax to showcase the power of *[Stargate](https://stargate.io)*, an API gateway that provides secure access to your Cassandra database. This gateway supports connections via REST, GRAPHQL, and schemaless Document APIs. The C# driver is also imlpemented to showcase connecting to your data via CQL queries. 
+This tool has been designed by Data Architects at DataStax to showcase the power of *[Astra](https://astra.datastax.com)*, a DBaaS built on Cassandra and *[Stargate](https://stargate.io)*, an API gateway that provides secure access to. This gateway supports connections via REST, GRAPHQL, and schemaless Document APIs. The C# driver is also imlpemented to showcase connecting to your data via CQL queries. This demo shows the ease with which you can access your data the way you want any way you want it. 
 
 ### Architectures
 
 ![Conceptual Architecture](img/conceptual-architecture.jpg)
 
+As you can see, this application is written using a Model-View-Controller architecture framework to implement a product inventory management system. The Model, View, and Controller code remain the same regardless of the API interface selected. This is achieved using a distinct Repository implementation per API option to contain the code changes and maximize extensibility of the framework. 
 
 ![Logical Architecture](img/logical-architecture.jpg)
 
+The web application communicates with the repositories, which expose the data object as a plain old class object (POCO). The repository implements the IRepository interface that exposes the following methods: 1) ```AddProduct(product)```; 2) ```GetProduct(id)```; 3) ```GetAllProducts()```; 4) ```UpdateProduct(product)```; and 5) ```DeleteProduct(id)```. Each repository uses a different query language to manipulate data in a data store. There are three data stores that are accessed by the demo: 1) Memory; 2) Astra; and 3) DSE cluster with Stargate
 
 ![Physical Architecture](img/physical-architecture.jpg)
 
+This is a Cloud native application which demonstrates the ability to use DBaaS and IaaS in concert to rapidly implement the solutions. In the steps below, we outline how to leverage Astra for FREE and in minutes as the data store for this demo. 
+*(Optional)* Lifecycle Manager is used to install and configure a three-node DSE cluster, with Stargate on a seperate VM.
 
 ## Getting Started
 
