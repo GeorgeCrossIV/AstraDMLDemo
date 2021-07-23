@@ -108,9 +108,9 @@ The setup is complete and you're ready to get rolling now!
 
 ### 3. Build and Run to play around Creating, Reading, Updating and Deleting
 
-Let's Build and Run our application.
+Finally, Build and Run the application.
 
-![App demo gif](/img/Hackathon Functional Demo1.gif)
+![App demo gif](/img/"Hackathon Functional Demo1.gif")
 
 
 
